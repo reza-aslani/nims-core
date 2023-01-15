@@ -9,7 +9,7 @@ services:
       - ARANGO_ROOT_PASSWORD=rezareza
     ports:
       - 8529:8529
-    container_name: nims-dbs-arangoDb
+    container_name: nims-core-arangoDb
     
     #  database.init-database
     #command: arangosh --server.password rezareza
@@ -31,13 +31,14 @@ services:
       - DOCKER_INFLUXDB_INIT_BUCKET=bucket1
     ports:
       - 8086:8086
-    container_name: nims-dbs-influxDb
+    container_name: nims-core-influxDb
 
   nims-core-mosquitto:
     image: eclipse-mosquitto:2
     restart: unless-stopped
     ports:
       - 1884:1884
+    container_name: nims-core-mosquitto
     volumes: 
       - ./configuration/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
   
